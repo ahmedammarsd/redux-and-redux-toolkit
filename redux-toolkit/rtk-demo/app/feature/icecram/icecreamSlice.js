@@ -10,23 +10,24 @@ const icecreamSlice = createSlice({
     name: "icecream",
     initialState,
     reducers:{
-        ordered: (state) => {
-            state.numberOfIcecreams--;
+        ordered: (state , action) => {
+            //state.numberOfIcecreams--;
+            state.numberOfIcecreams -= action.payload
         },
         reStocked: (state , action) => {
-            state.numberOfIcecreams += action.payload
-        }
+            state.numberOfIcecreams += action.payload;
+        },
     },
-    // extraReducers: {
-    //     ["cake/ordered"]: (state , action) => {
-    //        action.payload >= 2 ? state.numberOfIcecreams-- : "";
-    //     }
-    // }
-    extraReducers: (builder) => {
-        builder.addCase(cakeActions.ordered , (state , action) => {
-            action.payload >= 2 ? state.numberOfIcecreams-- : "";
-        } )
+    extraReducers: {
+        ["cake/ordered"]: (state , action) => {
+           action.payload >= 2 ? state.numberOfIcecreams-- : "";
+        }
     }
+    // extraReducers: (builder) => {
+    //     builder.addCase(cakeActions.ordered , (state , action) => {
+    //         action.payload >= 2 ? state.numberOfIcecreams-- : "";
+    //     } )
+    // }
 });
 
 module.exports = icecreamSlice.reducer;
