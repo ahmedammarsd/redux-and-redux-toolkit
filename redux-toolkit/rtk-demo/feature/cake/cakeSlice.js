@@ -1,6 +1,6 @@
+const createSlice = require("@reduxjs/toolkit").createSlice;
 const { icecreamActions } = require("../icecram/icecreamSlice");
 
-const createSlice = require("@reduxjs/toolkit").createSlice;
 
 const initialState = {
     numberOfCakes: 10,
@@ -17,11 +17,11 @@ const cakeSlice = createSlice({
             state.numberOfCakes += action.payload;
         },
     },
-    extraReducers: {
-        ["icecream/ordered"]: (state , action) => {
-            action.payload >= 3 ? state.numberOfCakes-- : "";
-        }
-    }
+    // extraReducers: {
+    //     ["icecream/ordered"]: (state , action) => {
+    //         action.payload >= 3 ? state.numberOfCakes-- : "";
+    //     }
+    // }
     // extraReducers: (builder) => {
     //     builder.addCase(icecreamActions.ordered, (state , action) => {
     //         action.payload >= 3 ? state.numberOfCakes-- : "";
